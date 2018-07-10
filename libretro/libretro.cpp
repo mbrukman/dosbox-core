@@ -122,7 +122,7 @@ core_timing_mode core_timing = CORE_TIMING_UNSYNCED;
 std::string retro_save_directory;
 std::string retro_system_directory;
 std::string retro_content_directory;
-std::string retro_library_name = "DOSBox-SVN";
+std::string retro_library_name = "DOSBox-SVN CE";
 
 /* libretro variables */
 retro_video_refresh_t video_cb;
@@ -1579,3 +1579,11 @@ void retro_cheat_reset(void) { }
 void retro_cheat_set(unsigned unused, bool unused1, const char* unused2) { }
 void retro_unload_game (void) { }
 unsigned retro_get_region (void) { return RETRO_REGION_NTSC; }
+
+bool GFX_LazyFullscreenRequested(){ return false; };
+void GFX_TearDown(){};
+bool GFX_IsFullscreen(){ return false; };
+void GFX_UpdateSDLCaptureState(){};
+void GFX_RestoreMode(){};
+void GFX_SwitchLazyFullscreen(bool){};
+void GFX_SwitchFullscreenNoReset(){};

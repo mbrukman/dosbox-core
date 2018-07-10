@@ -15,7 +15,7 @@ else ifneq ($(findstring win,$(UNAME)),)
 endif
 
 LIBRETRO_DIR := libretro
-TARGET_NAME  := dosbox_svn
+TARGET_NAME  := dosbox_svn_ce
 WITH_DYNAREC :=
 
 # try to guess the dynarec based on the host system, unreliable
@@ -46,10 +46,13 @@ endif
 # enable IPX
 ifeq ($(platform),win)
 	WITH_IPX := 1
+	WITH_VOODOO := 1
 else ifeq ($(platform),unix)
 	WITH_IPX := 1
+	WITH_VOODOO := 1
 else ifeq ($(platform),osx)
 	WITH_IPX := 1
+	WITH_VOODOO := 1
 endif
 
 # arm
@@ -222,7 +225,7 @@ else ifeq ($(platform), win)
 		LDFLAGS += -Wl,-Bstatic
 	else
 		LDFLAGS += -Wl,-Bstatic `sdl-config --static-libs` -lsdl_net
-		LDFLAGS += -Wl,-Bdynamic -liphlpapi -lws2_32
+		LDFLAGS += -Wl,-Bdynamic -liphlpapi -lws2_32 -lglu32 -lOpenGL32
 	endif
 	COMMONFLAGS += -D__USE_W32_SOCKETS -Werror=return-type
 else
@@ -247,6 +250,9 @@ else
 		ifeq ($(WITH_IPX), 1)
 			COMMONFLAGS += -DC_IPX
 		endif
+	endif
+	ifeq ($(WITH_VOODOO), 1)
+		COMMONFLAGS += -DC_OPENGL
 	endif
 endif
 
