@@ -535,6 +535,7 @@ struct retro_core_option_definition option_defs_us[] = {
          { "compat", NULL },
          { "fast", NULL },
          { "mame", NULL },
+         { "nuked", NULL },
          { NULL, NULL },
       },
       "default"
