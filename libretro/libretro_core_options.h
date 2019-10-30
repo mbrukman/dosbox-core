@@ -189,6 +189,31 @@ struct retro_core_option_definition option_defs_us[] = {
       },
       "32"
    },
+   {
+      "dosbox_svn_voodoo",
+      "System: Enable Voodoo support",
+      "Enable Voodoo support.",
+      {
+         { "false", "false" },
+         { "software", "true" },
+#if 0
+         { "opengl", "true (opengl)" },
+#endif
+         { NULL, NULL },
+      },
+      "false"
+   },
+   {
+      "dosbox_svn_voodoo_memory",
+      "System: Voodoo memory size",
+      "The amount of memory that the emulated Voodoo car has.",
+      {
+         { "standard", "4MB" },
+         { "max", "12MB" },
+         { NULL, NULL },
+      },
+      "standard"
+   },
 #if defined(C_DYNREC) || defined(C_DYNAMIC_X86)
    {
       "dosbox_svn_cpu_core",
