@@ -89,6 +89,8 @@ The valid ABI choices are `arm, oldarm, x86_64, x86, ppc`
 - External MIDI support (Windows, Linux) (**RetroArch**)
 - Mouse emulation via gamepad
 - Emulate keyboard and gamepad with a single physical device (**RetroArch**)
+- Keko's Voodoo patch, software only implementation for now [(VOGONS thread)](https://www.vogons.org/viewtopic.php?f=32&t=42449&p=789805#p406327).
+- Nuked OPL3 patch [(VOGONS thread)](https://www.vogons.org/viewtopic.php?f=41&t=49327&start=20)
 
 ## Future Ideas
 - CD-ROM image automount
