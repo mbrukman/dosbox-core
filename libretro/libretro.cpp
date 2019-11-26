@@ -1019,12 +1019,12 @@ void check_variables()
         var.key = "dosbox_svn_voodoo";
         var.value = NULL;
         if (environ_cb(RETRO_ENVIRONMENT_GET_VARIABLE, &var) && var.value)
-            update_dosbox_variable("pci", "voodoo", var.value);
+            update_dosbox_variable(false, "pci", "voodoo", var.value);
 
         var.key = "dosbox_svn_voodoo_memory";
         var.value = NULL;
         if (environ_cb(RETRO_ENVIRONMENT_GET_VARIABLE, &var) && var.value)
-            update_dosbox_variable("pci", "voodoomem", var.value);
+            update_dosbox_variable(false, "pci", "voodoomem", var.value);
 
         if (update_cycles)
         {
