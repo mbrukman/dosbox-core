@@ -587,9 +587,12 @@ retro::CoreOptions retro::core_options {
         {
             "midi_driver",
             "Sound: MIDI driver",
-            "Driver to use for MIDI playback. The MT-32 emulation driver uses Munt and needs the "
-                "correct ROMs in the frontend's system directory. The libretro driver forwards "
-                "MIDI to the frontend, in which case you need to configure MIDI output there.",
+            "The MT-32 emulation driver uses Munt and needs the correct ROMs in the frontend's "
+                "system directory.\n"
+                "For BASSMIDI, you need to download the BASS and BASSMIDI libraries for your OS "
+                "from https://www.un4seen.com and place them in the frontend's system directory.\n"
+                "The libretro driver forwards MIDI to the frontend, in which case you need to "
+                "configure MIDI output there.",
             {
                 "none",
             #ifdef HAVE_ALSA
@@ -598,6 +601,7 @@ retro::CoreOptions retro::core_options {
             #ifdef __WIN32__
                 { "win32", "Windows MIDI" },
             #endif
+                { "bassmidi", "BASSMIDI" },
                 { "fluidsynth", "FluidSynth" },
                 { "mt32", "MT-32 emulator" },
                 "libretro",
@@ -620,6 +624,13 @@ retro::CoreOptions retro::core_options {
             // No values. We detect and set MIDI ports at runtime.
         },
         #endif
+        {
+            "bassmidi.soundfont",
+            "Sound (BASSMIDI): Soundfont",
+            "Soundfonts are looked for in the \"soundfonts\" directory inside the frontend's "
+                "system directory. Supported formats are SF2 and SFZ.",
+            // No values. We scan for soundfonts at runtime.
+        },
         {
             "fluid.soundfont",
             "Sound (FluidSynth): Soundfont",

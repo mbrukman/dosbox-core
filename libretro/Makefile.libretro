@@ -298,10 +298,10 @@ endif
 include Makefile.common
 
 OBJECTS  = $(SOURCES_CXX:.cpp=.o) $(SOURCES_C:.c=.o)
-COMMONFLAGS += `$(PKGCONFIG) --cflags fluidsynth` -I$(MUNT_BUILD_DIR)/include
+COMMONFLAGS += `$(PKGCONFIG) --cflags fluidsynth dlfcn` -I$(MUNT_BUILD_DIR)/include
 CXXFLAGS += -D__LIBRETRO__ $(fpic) $(INCFLAGS) $(COMMONFLAGS)
 CFLAGS   += -D__LIBRETRO__ $(fpic) $(INCFLAGS) $(COMMONFLAGS)
-LDFLAGS  += -lm $(fpic) `$(PKGCONFIG) --libs fluidsynth libinstpatch-1.0` -L$(MUNT_BUILD_DIR) -lmt32emu
+LDFLAGS  += -lm $(fpic) `$(PKGCONFIG) --libs fluidsynth libinstpatch-1.0 dlfcn` -L$(MUNT_BUILD_DIR) -lmt32emu
 
 all: $(TARGET)
 
