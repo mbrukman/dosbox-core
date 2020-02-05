@@ -295,13 +295,18 @@ ifdef TARGET_TRIPLET
 	export PKG_CONFIG_PATH_$(subst .,_,$(subst -,_,$(TARGET_TRIPLET))) = $(PKG_CONFIG_PATH)
 endif
 
+PKG_CONF_PACKAGES = fluidsynth libinstpatch-1.0
+ifeq ($(platform), win)
+	PKG_CONF_PACKAGES += dlfcn
+endif
+
 include Makefile.common
 
 OBJECTS  = $(SOURCES_CXX:.cpp=.o) $(SOURCES_C:.c=.o)
-COMMONFLAGS += `$(PKGCONFIG) --cflags fluidsynth dlfcn` -I$(MUNT_BUILD_DIR)/include
+COMMONFLAGS += `$(PKGCONFIG) --cflags $(PKG_CONF_PACKAGES)` -I$(MUNT_BUILD_DIR)/include
 CXXFLAGS += -D__LIBRETRO__ $(fpic) $(INCFLAGS) $(COMMONFLAGS)
 CFLAGS   += -D__LIBRETRO__ $(fpic) $(INCFLAGS) $(COMMONFLAGS)
-LDFLAGS  += -lm $(fpic) `$(PKGCONFIG) --libs fluidsynth libinstpatch-1.0 dlfcn` -L$(MUNT_BUILD_DIR) -lmt32emu
+LDFLAGS  += -lm $(fpic) `$(PKGCONFIG) --libs $(PKG_CONF_PACKAGES)` -L$(MUNT_BUILD_DIR) -lmt32emu
 
 all: $(TARGET)
 
