@@ -12,6 +12,8 @@ class MidiHandlerBassmidi final: public MidiHandler
 public:
     using HSTREAM = uint32_t;
 
+    ~MidiHandlerBassmidi() override;
+
     static void initDosboxSettings();
 
     auto Open(const char* conf) -> bool override;
